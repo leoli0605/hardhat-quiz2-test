@@ -17,4 +17,13 @@ describe("Quiz_02", function () {
     MyToken = await ethers.getContractFactory("MyToken");
     token = await MyToken.deploy();
   });
+
+  it("should have correct name and symbol", async function () {
+    expect(await token.name()).to.equal("MyToken");
+    expect(await token.symbol()).to.equal("TTT");
+  });
+
+  it("should support interface", async function () {
+    expect(await token.supportsInterface("0x00000001")).to.equal(false);
+  });
 });
